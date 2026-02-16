@@ -1,0 +1,22 @@
+{
+  "enchantments": [
+    {
+      "id": "minecraft:power",
+      "lvl": 1
+    }
+  ],
+  "item": "mets_blade:first_forged_blade",
+  "name": "mets_blade:first_forged",
+  "properties": {
+    "attack_base": 13.0,
+    "max_damage": 128,
+    "slash_art": "slashblade:drive_horizontal",
+    "sword_type": [
+      "bewitched"
+    ]
+  },
+  "render": {
+    "model": "mets_blade:model/basic.obj",
+    "texture": "mets_blade:model/texture_first.png"
+  }
+}

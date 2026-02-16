@@ -1,0 +1,51 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:bloody_innovation",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "mets_blade:spirit_forged_blade_technical",
+            "request": {
+              "name": "mets_blade:technical_innovation",
+              "kill": 1500,
+              "proud_soul": 5000,
+              "refine": 10
+            }
+          },
+          "B": {
+            "item": "mekanism:ultimate_energy_cube"
+          },
+          "C": {
+            "item": "mekanism:module_blasting_unit"
+          },
+          "D": {
+            "item": "mekanism:supercharged_coil"
+          },
+          "E": {
+            "item": "mekanism:hdpe_sheet"
+          }
+        },
+        "pattern": [
+          "ECD",
+          "BAB",
+          "DCE"
+        ],
+        "result": {
+          "item": "mets_blade:god_forged_blade_bloody"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

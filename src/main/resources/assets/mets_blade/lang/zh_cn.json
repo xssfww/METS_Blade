@@ -1,0 +1,23 @@
+{
+  "item.mets_blade.god_forged_blade_bloody": "§6神钢刃§r§c「血腥革新」§r",
+  "item.mets_blade.bloody_innovation": "§6神钢刃§r§c「血腥革新」§r",
+  "item.mets_blade.god_forged_blade_craft": "§6神钢刃§r§3「工艺复兴」§r",
+  "item.mets_blade.craft_renaissance": "§6神钢刃§r§3「工艺复兴」§r",
+  "item.mets_blade.spirit_forged_blade_conservation": "§b灵钢刃§r§e「能量守恒」§r",
+  "item.mets_blade.conservation_energy": "§b灵钢刃§r§e「能量守恒」§r",
+  "item.mets_blade.spirit_forged_blade_technical": "§b灵钢刃§r§9「技术革新」§r",
+  "item.mets_blade.technical_innovation": "§b灵钢刃§r§9「技术革新」§r",
+  "item.mets_blade.nano_forged_blade": "钢刃「纳米科技」",
+  "item.mets_blade.nano_forged": "钢刃「纳米科技」",
+  "item.mets_blade.first_forged_blade": "钢刃「源初」",
+  "item.mets_blade.first_forged": "钢刃「源初」",
+  "slash_art.mets_blade.hyper_system": "§6Hyper System,§r§c起動！§r",
+  "se.mets_blade.divine_surge_fierce_wave": "§9神劲·烈波§r",
+  "slash_art.mets_blade.hyper_speed_sword_y": "§6高速幻影剑§r§c-γ§r",
+  "se.mets_blade.divine_surge_fire_arrow": "§9神劲·火矢§r",
+  "slash_art.mets_blade.hyper_energy_particle_flow": "§9高能粒子流§r§6EX§r",
+  "se.mets_blade.doom_surge_curse_destroy": "§b死劲·灭咒§r",
+  "slash_art.mets_blade.conservation_energy": "§9动量定理",
+  "se.mets_blade.inch_surge_arrow": "§3寸劲·箭矢",
+  "enchantment.level.12": "§f「§r§e至高极限§r§f」§r"
+}

@@ -1,0 +1,57 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        },
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanismgenerators"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:conservation_energy",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "mets_blade:nano_forged_blade",
+            "request": {
+              "name": "mets_blade:nano_forged",
+              "kill": 1000,
+              "refine": 6
+            }
+          },
+          "B": {
+            "item": "mekanism:alloy_atomic"
+          },
+          "C": {
+            "item": "mekanism:elite_control_circuit"
+          },
+          "D": {
+            "item": "mekanismgenerators:rotational_complex"
+          },
+          "E": {
+            "item": "mekanism:elite_energy_cube"
+          },
+          "F": {
+            "item": "mekanismgenerators:electromagnetic_coil"
+          }
+        },
+        "pattern": [
+          "BCB",
+          "DAF",
+          "BEB"
+        ],
+        "result": {
+          "item": "mets_blade:spirit_forged_blade_conservation"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

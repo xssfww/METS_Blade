@@ -1,0 +1,50 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:technical_innovation",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "mets_blade:nano_forged_blade",
+            "request": {
+              "name": "mets_blade:nano_forged",
+              "kill": 1000,
+              "refine": 6
+            }
+          },
+          "B": {
+            "item": "mekanism:alloy_atomic"
+          },
+          "C": {
+            "item": "mekanism:elite_control_circuit"
+          },
+          "D": {
+            "item": "mekanism:laser"
+          },
+          "E": {
+            "item": "mekanism:elite_energy_cube"
+          }
+        },
+        "pattern": [
+          "BCB",
+          "DAD",
+          "BEB"
+        ],
+        "result": {
+          "item": "mets_blade:spirit_forged_blade_technical"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

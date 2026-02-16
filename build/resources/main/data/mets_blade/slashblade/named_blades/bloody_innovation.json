@@ -1,0 +1,38 @@
+{
+  "enchantments": [
+    {
+      "id": "minecraft:power",
+      "lvl": 12
+    },
+    {
+      "id": "minecraft:unbreaking",
+      "lvl": 12
+    },
+    {
+      "id": "minecraft:sharpness",
+      "lvl": 12
+    },
+    {
+      "id": "minecraft:looting",
+      "lvl": 3
+    }
+  ],
+  "item": "mets_blade:god_forged_blade_bloody",
+  "name": "mets_blade:bloody_innovation",
+  "properties": {
+    "attack_base": 1024.0,
+    "max_damage": 1024,
+    "slash_art": "mets_blade:hyper_system",
+    "special_effects": [
+      "mets_blade:divine_surge_fierce_wave"
+    ],
+    "sword_type": [
+      "bewitched"
+    ]
+  },
+  "render": {
+    "summon_sword_color": 8262676,
+    "model": "mets_blade:model/advanced.obj",
+    "texture": "mets_blade:model/texture_blood.png"
+  }
+}

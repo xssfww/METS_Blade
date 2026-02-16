@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "net/METS_Blade/Mixin/SlashBladeRecipeMixin": {
+      "assemble(Lnet/minecraft/world/inventory/CraftingContainer;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;": "Lmods/flammpfeil/slashblade/recipe/SlashBladeShapedRecipe;m_5874_(Lnet/minecraft/world/inventory/CraftingContainer;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;"
+    }
+  },
+  "data": {
+    "searge": {
+      "net/METS_Blade/Mixin/SlashBladeRecipeMixin": {
+        "assemble(Lnet/minecraft/world/inventory/CraftingContainer;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;": "Lmods/flammpfeil/slashblade/recipe/SlashBladeShapedRecipe;m_5874_(Lnet/minecraft/world/inventory/CraftingContainer;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;"
+      }
+    }
+  }
+}

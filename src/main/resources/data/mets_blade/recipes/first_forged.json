@@ -1,0 +1,45 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:first_forged",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "slashblade:slashblade",
+            "request": {
+              "kill": 70
+            }
+          },
+          "B": {
+            "item": "mekanism:alloy_infused"
+          },
+          "C": {
+            "item": "mekanism:basic_control_circuit"
+          },
+          "D": {
+            "item": "mekanism:energy_tablet"
+          }
+        },
+        "pattern": [
+          "BCB",
+          "BAB",
+          "DCD"
+        ],
+        "result": {
+          "item": "mets_blade:first_forged_blade"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

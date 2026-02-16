@@ -1,0 +1,49 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:nano_forged",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "mets_blade:first_forged_blade",
+            "request": {
+              "name": "mets_blade:first_forged",
+              "kill": 300
+            }
+          },
+          "B": {
+            "item": "mekanism:alloy_infused"
+          },
+          "C": {
+            "item": "mekanism:advanced_control_circuit"
+          },
+          "D": {
+            "item": "mekanism:advanced_energy_cube"
+          },
+          "E": {
+            "item": "mekanism:alloy_reinforced"
+          }
+        },
+        "pattern": [
+          "ECE",
+          "BAB",
+          "EDE"
+        ],
+        "result": {
+          "item": "mets_blade:nano_forged_blade"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

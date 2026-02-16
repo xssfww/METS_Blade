@@ -1,0 +1,15 @@
+Java Launcher: C:\Program Files\Java\jdk-17\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\curse.maven\slashblade-hf-blade-1299888\6917439\2eec8bbee2f0e4635af4ba9d02a3601b90c358c2\slashblade-hf-blade-1299888-6917439.jar, --output, C:\Users\Administrator\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\slashblade-hf-blade-1299888\6917439_mapped_parchment_2023.09.03-1.20.1\slashblade-hf-blade-1299888-6917439_mapped_parchment_2023.09.03-1.20.1.jar, --mcp, C:\Users\Administrator\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip, --strip-signatures'
+Classpath:
+ - C:\Users\Administrator\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.4.4\installertools-1.4.4-fatjar.jar
+Working directory: C:\Users\Administrator\METS_Blade\build\_RenameSrg2Mcp_-1100633991
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\curse.maven\slashblade-hf-blade-1299888\6917439\2eec8bbee2f0e4635af4ba9d02a3601b90c358c2\slashblade-hf-blade-1299888-6917439.jar
+Output: C:\Users\Administrator\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\slashblade-hf-blade-1299888\6917439_mapped_parchment_2023.09.03-1.20.1\slashblade-hf-blade-1299888-6917439_mapped_parchment_2023.09.03-1.20.1.jar
+MCP:    C:\Users\Administrator\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Process complete

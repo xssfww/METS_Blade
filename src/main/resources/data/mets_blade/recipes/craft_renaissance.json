@@ -1,0 +1,54 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "mekanism"
+        }
+      ],
+      "recipe": {
+        "type": "slashblade:shaped_blade",
+        "blade": "mets_blade:craft_renaissance",
+        "category": "equipment",
+        "key": {
+          "A": {
+            "type": "slashblade:blade",
+            "item": "mets_blade:spirit_forged_blade_conservation",
+            "request": {
+              "name": "mets_blade:conservation_energy",
+              "kill": 1600,
+              "proud_soul": 5000,
+              "refine": 12
+            }
+          },
+          "B": {
+            "item": "mekanism:ultimate_energy_cube"
+          },
+          "C": {
+            "item": "mekanism:module_gravitational_modulating_unit"
+          },
+          "D": {
+            "item": "mekanism:module_color_modulation_unit"
+          },
+          "E": {
+            "item": "mekanism:antiprotonic_nucleosynthesizer"
+          },
+          "F": {
+            "item": "mekanism:hdpe_sheet"
+          }
+        },
+        "pattern": [
+          "FCE",
+          "BAB",
+          "EDF"
+        ],
+        "result": {
+          "item": "mets_blade:god_forged_blade_craft"
+        },
+        "show_notification": true
+      }
+    }
+  ]
+}

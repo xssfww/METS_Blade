@@ -1,0 +1,15 @@
+Java Launcher: C:\Program Files\Java\jdk-17\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\curse.maven\sjap-310187\7039817\9c2e763622cfac3f7585303c0b204ea303e2f21d\sjap-310187-7039817.jar, --output, C:\Users\Administrator\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\sjap-310187\7039817_mapped_parchment_2023.09.03-1.20.1\sjap-310187-7039817_mapped_parchment_2023.09.03-1.20.1.jar, --mcp, C:\Users\Administrator\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip, --strip-signatures'
+Classpath:
+ - C:\Users\Administrator\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.4.4\installertools-1.4.4-fatjar.jar
+Working directory: C:\Users\Administrator\METS_Blade\build\_RenameSrg2Mcp_3410732
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\curse.maven\sjap-310187\7039817\9c2e763622cfac3f7585303c0b204ea303e2f21d\sjap-310187-7039817.jar
+Output: C:\Users\Administrator\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\sjap-310187\7039817_mapped_parchment_2023.09.03-1.20.1\sjap-310187-7039817_mapped_parchment_2023.09.03-1.20.1.jar
+MCP:    C:\Users\Administrator\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Process complete

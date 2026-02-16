@@ -1,0 +1,23 @@
+{
+  "item.mets_blade.god_forged_blade_bloody": "§6Blade of GodForged§r§c「Bloody Innovation」§r",
+  "item.mets_blade.bloody_innovation": "§6Blade of GodForged§r§c「Bloody Innovation」§r",
+  "item.mets_blade.god_forged_blade_craft": "§6Blade of GodForged§r§3「Craft Renaissance」§r",
+  "item.mets_blade.craft_renaissance": "§6Blade of GodForged§r§3「Craft Renaissance」§r",
+  "item.mets_blade.spirit_forged_blade_conservation": "§bBlade of SpiritForged§r§e「Conservation Energy」§r",
+  "item.mets_blade.conservation_energy": "§bBlade of SpiritForged§r§e「Conservation Energy」§r",
+  "item.mets_blade.spirit_forged_blade_technical": "§bBlade of SpiritForged§r§9「Technical Innovation」§r",
+  "item.mets_blade.technical_innovation": "§bBlade of SpiritForged§r§9「Technical Innovation」§r",
+  "item.mets_blade.nano_forged_blade": "Blade of NanoForged",
+  "item.mets_blade.nano_forged": "Blade of NanoForged",
+  "item.mets_blade.first_forged_blade": "Blade of FirstForged",
+  "item.mets_blade.first_forged": "Blade of FirstForged",
+  "slash_art.mets_blade.hyper_system": "§6Hyper System,§r§cStart！§r",
+  "se.mets_blade.divine_surge_fierce_wave": "§9DivineSurge·FierceWave§r",
+  "slash_art.mets_blade.hyper_speed_sword_y": "§6HyperSpeedPhantomSword§r§c-γ§r",
+  "se.mets_blade.divine_surge_fire_arrow": "§9DivineSurge·FireArrow§r",
+  "slash_art.mets_blade.hyper_energy_particle_flow": "§9HyperParticleFlow§r§6EX§r",
+  "se.mets_blade.doom_surge_curse_destroy": "§bDoomSurge·CurseDestroy",
+  "slash_art.mets_blade.conservation_energy": "§6ConservationEnergy",
+  "se.mets_blade.inch_surge_arrow": "§3InchSurge·Arrow",
+  "enchantment.level.12": "§f「§r§eUltimate Limit§r§f」§r"
+}

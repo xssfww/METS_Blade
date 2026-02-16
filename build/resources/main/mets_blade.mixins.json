@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.METS_Blade.Mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mets_blade.refmap.json",
+  "mixins": [
+    "SlashBladeRecipeMixin"
+  ],
+  "client": [
+    "InputHandlerMixin"
+  ]
+}
