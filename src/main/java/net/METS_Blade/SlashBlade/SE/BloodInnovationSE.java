@@ -32,6 +32,7 @@ public class BloodInnovationSE extends SpecialEffect {
                     int level = player.experienceLevel;
                     if (SpecialEffect.isEffective(METS_BladeSlashEffect.Divine_Surge_Fierce_Wave.get(), level)) {
                         if (event.getTarget() != null) {
+                            event.getTarget().invulnerableTime = 0;
                             doBloodInnovationSE(player,event.getTarget().position(),false);
                         }
                     }

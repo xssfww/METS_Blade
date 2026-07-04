@@ -24,7 +24,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class CraftRenaissanceSE extends SpecialEffect {
-    private static boolean sided = true;
     public CraftRenaissanceSE() {
         super(35, true, true);
     }
@@ -52,6 +51,10 @@ public class CraftRenaissanceSE extends SpecialEffect {
                 int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.POWER_ARROWS, owner);
                 float Attack = state.getBaseAttackModifier();
                 float Damage = Attack + (Attack * ((float) (level + state.getRefine() + rank) / 2));
+                if (!owner.getPersistentData().contains("blade_side")) {
+                    owner.getPersistentData().putBoolean("blade_side",false);
+                }
+                boolean sided = owner.getPersistentData().getBoolean("blade_side");
                 Vec3 start = owner.getEyePosition(1.0f);
                 Vec3 end = start.add(owner.getLookAngle().scale(40));
                 Vec3 TargetPos = Level.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, owner)).getLocation();
@@ -83,11 +86,11 @@ public class CraftRenaissanceSE extends SpecialEffect {
                 Swords.setPos(pos);
                 Swords.setOwner(owner);
                 Swords.setRot(dir);
-                Swords.SetTargetPos(dir);
+                Swords.setTargetPos(dir);
                 Swords.setRoll(owner.getRandom().nextFloat() * 360.0f);
                 Swords.setDelay(0);
+                owner.getPersistentData().putBoolean("blade_side", !sided);
                 Level.addFreshEntity(Swords);
-                sided = !sided;
             }
         });
     }

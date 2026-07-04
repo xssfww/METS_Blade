@@ -4,9 +4,15 @@ import mods.flammpfeil.slashblade.SlashBlade;
 import mods.flammpfeil.slashblade.ability.StunManager;
 import mods.flammpfeil.slashblade.entity.Projectile;
 import mods.flammpfeil.slashblade.util.KnockBacks;
+import net.METS_Blade.SlashBlade.DamageSource.MixDamageSource;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,15 +50,30 @@ public class EntityBloodSword extends EntityCommonSword {
         if (targetEntity instanceof LivingEntity entity) {
             KnockBacks.cancel.action.accept(entity);
             StunManager.setStun(entity);
-            if (this.getShooter() != null) {
-                if (this.level() instanceof ServerLevel Level) {
-                    Level.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0,0.0,0.0);
-                    this.playSound(SoundEvents.GENERIC_EXPLODE, 0.7F, 1.6F + (Level.getRandom().nextFloat() - Level.getRandom().nextFloat()) * 0.4F);
-                    entity.hurt(this.damageSources().explosion(this.getShooter(),this), (float) this.getDamage());
-                    entity.invulnerableTime = 0;
-                    entity.hurt(this.damageSources().indirectMagic(this.getShooter(),this), (float) this.getDamage());
-                    entity.invulnerableTime = 0;
-                }
+            if (this.getShooter() != null && this.level() instanceof ServerLevel Level) {
+                Registry<DamageType> damageTypes = Level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
+                MixDamageSource source = new MixDamageSource(
+                        damageTypes.getHolderOrThrow(DamageTypes.EXPLOSION),
+                        this,
+                        this.getShooter(),
+                        this.position()
+                );
+                Level.sendParticles(
+                        ParticleTypes.EXPLOSION,
+                        this.getX(), this.getY(), this.getZ(),
+                        1,
+                        0.0, 0.0, 0.0, 0.0
+                );
+                this.playSound(
+                        SoundEvents.GENERIC_EXPLODE,
+                        0.7F,
+                        1.6F + (Level.getRandom().nextFloat() - Level.getRandom().nextFloat()) * 0.4F
+                );
+                source.addRuntimeTag(DamageTypeTags.BYPASSES_ARMOR)
+                      .addRuntimeTag(DamageTypeTags.BYPASSES_EFFECTS)
+                      .addRuntimeTag(DamageTypeTags.BYPASSES_COOLDOWN)
+                      .addRuntimeTag(DamageTypeTags.BYPASSES_ENCHANTMENTS);
+                entity.hurt(source, (float) this.getDamage());
             }
         }
     }

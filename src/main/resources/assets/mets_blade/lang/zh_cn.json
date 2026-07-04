@@ -19,5 +19,7 @@
   "se.mets_blade.doom_surge_curse_destroy": "§b死劲·灭咒§r",
   "slash_art.mets_blade.conservation_energy": "§9动量定理",
   "se.mets_blade.inch_surge_arrow": "§3寸劲·箭矢",
-  "enchantment.level.12": "§f「§r§e至高极限§r§f」§r"
+  "enchantment.level.12": "§f「§r§e至高极限§r§f」§r",
+  "death.attack.mix_damage": "%s 在高能速子流中崩解，连夸克都未曾留下",
+  "death.attack.mix_damage_killer": "%s 被 %s 的高能速子流从存在层面抹去，灰飞烟灭"
 }

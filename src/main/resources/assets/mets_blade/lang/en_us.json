@@ -19,5 +19,7 @@
   "se.mets_blade.doom_surge_curse_destroy": "§bDoomSurge·CurseDestroy",
   "slash_art.mets_blade.conservation_energy": "§6ConservationEnergy",
   "se.mets_blade.inch_surge_arrow": "§3InchSurge·Arrow",
-  "enchantment.level.12": "§f「§r§eUltimate Limit§r§f」§r"
+  "enchantment.level.12": "§f「§r§eUltimate Limit§r§f」§r",
+  "death.attack.mix_damage": "%s was torn apart by composite damage",
+  "death.attack.mix_damage_killer": "%s was annihilated by %s's composite damage"
 }

@@ -91,7 +91,8 @@ public class TechnicalInnovationSA {
                     Swords.setPos(pos);
                     Swords.setOwner(owner);
                     Swords.setRot(dir);
-                    Swords.SetTargetPos(dir);
+                    Swords.setTargetPos(dir);
+                    foundTarget.ifPresent(entity -> Swords.setTargetId(entity.getId()));
                     Swords.setRoll(owner.getRandom().nextFloat() * 360.0f);
                     Swords.setDelay(i / 4);
                     Level.addFreshEntity(Swords);

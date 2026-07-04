@@ -93,7 +93,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    implementation fg.deobf("curse.maven:slashblade-resharped-1022428:7363505")
+    implementation fg.deobf("curse.maven:slashblade-resharped-1022428:8090912")
     implementation fg.deobf("curse.maven:slashblade-hf-blade-1299888:6917439")
     implementation fg.deobf("curse.maven:sjap-310187:7039817")
     implementation fg.deobf("curse.maven:mekanism-268560:6552911")

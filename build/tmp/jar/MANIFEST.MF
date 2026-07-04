@@ -5,6 +5,6 @@ Specification-Version: 1
 Implementation-Title: METS_Blade
 Implementation-Version: 1.0
 Implementation-Vendor: XcS
-Implementation-Timestamp: 2026-02-16T23:24:10+0800
+Implementation-Timestamp: 2026-07-04T20:16:55+0800
 MixinConfigs: mets_blade.mixins.json
 

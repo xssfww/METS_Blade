@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EFTM.test.iml" filepath="$PROJECT_DIR$/.idea/modules/EFTM.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/METS_Blade.main.iml" filepath="$PROJECT_DIR$/.idea/modules/METS_Blade.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/METS_Blade.test.iml" filepath="$PROJECT_DIR$/.idea/modules/METS_Blade.test.iml" />
     </modules>
