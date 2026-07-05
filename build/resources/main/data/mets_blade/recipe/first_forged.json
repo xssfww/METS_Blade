@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "slashblade:shaped_blade",
+  "blade": "mets_blade:first_forged",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "type": "slashblade:blade",
+      "items": [
+        "slashblade:slashblade"
+      ],
+      "request": {
+        "kill": 70
+      }
+    },
+    "B": {
+      "item": "mekanism:alloy_infused"
+    },
+    "C": {
+      "item": "mekanism:basic_control_circuit"
+    },
+    "D": {
+      "item": "mekanism:energy_tablet"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "BAB",
+    "DCD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mets_blade:first_forged_blade"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,22 @@
+{
+  "enchantments": [
+    {
+      "id": "minecraft:power",
+      "lvl": 2
+    }
+  ],
+  "item": "mets_blade:nano_forged_blade",
+  "name": "mets_blade:nano_forged",
+  "properties": {
+    "attack_base": 26.0,
+    "max_damage": 256,
+    "slash_art": "slashblade:drive_horizontal",
+    "sword_type": [
+      "bewitched"
+    ]
+  },
+  "render": {
+    "model": "mets_blade:model/basic.obj",
+    "texture": "mets_blade:model/texture_nano.png"
+  }
+}
