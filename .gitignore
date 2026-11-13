@@ -28,6 +28,9 @@
 /debug/
 /screenshots/
 
+# 本地 CoreMod 试验代码（不属于本模组构建）
+/main/
+
 # 本地依赖 jar（不要提交到 GitHub）
 /libs/*.jar
 
