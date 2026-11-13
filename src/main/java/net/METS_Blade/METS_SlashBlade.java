@@ -1,5 +1,6 @@
 package net.METS_Blade;
 
+import net.METS_Blade.Network.PacketHandler;
 import net.METS_Blade.Register.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -13,5 +14,6 @@ public class METS_SlashBlade {
         METS_BladeSlashArt.SLASH_ARTS.register(bus);
         METS_BladeSlashEffect.SPECIAL_EFFECT.register(bus);
         bus.addListener(METS_BladeCapability::RegisterCapabilities);
+        bus.addListener(PacketHandler::RegisterManager);
     }
 }

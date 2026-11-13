@@ -1,0 +1,49 @@
+# Gradle
+/.gradle/
+/build/
+/out/
+/bin/
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+/.metadata/
+/.settings/
+/.classpath
+/.project
+/.eclipse/
+
+# VS Code
+/.vscode/
+
+# Minecraft / Forge 运行目录
+/run/
+/run-data/
+/logs/
+/crash-reports/
+/debug/
+/screenshots/
+
+# 本地 CoreMod 试验代码（不属于本模组构建）
+/main/
+
+# 本地依赖 jar（不要提交到 GitHub）
+/libs/*.jar
+
+# 本地配置与日志
+*.log
+*.lock
+local.properties
+.env
+
+# 编译产物
+*.class
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini

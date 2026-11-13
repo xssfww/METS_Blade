@@ -50,12 +50,30 @@ neoForge {
     }
 }
 
+repositories.clear() // 清空插件自动添加的仓库，必须放在最前面
+
+repositories.clear() // 关键步骤：清空自动注入的仓库，防止在失效地址上耗时
+
 repositories {
+    // 1. NeoForge 核心依赖镜像（替换官方的 releases）
+    maven {
+        url = uri("https://neoforged.forgecdn.net/releases")
+    }
+    // 2. NeoForge 元数据镜像（替换官方的 mojang-meta）
+    maven {
+        url = uri("https://neoforged.forgecdn.net/mojang-meta")
+    }
+    // 3. Minecraft 官方库
+    maven {
+        url = uri("https://libraries.minecraft.net/")
+    }
+
+    // 4. 你原有的 CurseForge 和本地仓库
     flatDir {
         dir 'libs'
     }
     maven {
-        url "https://cursemaven.com"
+        url = "https://cursemaven.com"
         content {
             includeGroup "curse.maven"
         }

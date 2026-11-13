@@ -9,7 +9,8 @@ import mods.flammpfeil.slashblade.util.VectorHelper;
 import net.METS_Blade.Capability.METS_FEBladeStorage;
 import net.METS_Blade.Register.METS_BladeEntity;
 import net.METS_Blade.Register.METS_BladeSlashEffect;
-import net.METS_Blade.SlashBlade.Entity.EntityBloodSword;
+import net.METS_Blade.SlashBlade.Entity.EntityCommonSword;
+import net.METS_Blade.SlashBlade.Util.SEBladeSwitch;
 import net.METS_Blade.SlashBlade.Util.ToolManager;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -35,6 +36,9 @@ public class ConservationEnergySE  extends SpecialEffect {
         if (state.hasSpecialEffect(METS_BladeSlashEffect.Inch_Surge_Arrow.getId())) {
             LivingEntity user = event.getUser();
             if (user instanceof ServerPlayer player) {
+                if (SEBladeSwitch.isDisabled(player)) {
+                    return;
+                }
                 if ((player.level() instanceof ServerLevel)) {
                     int level = player.experienceLevel;
                     if (SpecialEffect.isEffective(METS_BladeSlashEffect.Inch_Surge_Arrow.get(), level)) {
@@ -81,7 +85,7 @@ public class ConservationEnergySE  extends SpecialEffect {
                         }
                     }
                     int color = sided ? 0xFFFFB1 : 0xFFFF7B;
-                    EntityBloodSword Swords = new EntityBloodSword(METS_BladeEntity.BloodSwords, Level);
+                    EntityCommonSword Swords = new EntityCommonSword(METS_BladeEntity.CommonSwords, Level);
                     Swords.setDamage(Damage);
                     Swords.setColor(color);
                     Swords.setPos(pos);

@@ -1,6 +1,9 @@
 pluginManagement {
     repositories {
         mavenLocal()
+        maven {
+            url = uri("https://lss233.littleservice.cn/repositories/minecraft")
+        }
         gradlePluginPortal()
         maven { url = 'https://maven.neoforged.net/releases' }
     }
