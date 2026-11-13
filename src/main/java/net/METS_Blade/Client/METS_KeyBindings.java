@@ -7,14 +7,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public final class METS_KeyBindings {
+public class METS_KeyBindings {
     public static final KeyMapping TOGGLE_SE = new KeyMapping(
             "key.mets_blade.toggle_se",
             GLFW.GLFW_KEY_K,
             "key.category.mets_blade"
     );
-    private METS_KeyBindings() {
-    }
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(TOGGLE_SE);
