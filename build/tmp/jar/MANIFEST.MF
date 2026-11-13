@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Specification-Title: METS_Blade
-Specification-Vendor: XcS
-Specification-Version: 1
-Implementation-Title: METS_Blade
-Implementation-Vendor: XcS
-Implementation-Timestamp: 2026-11-13T21:08:08+0800
-MixinConfigs: mets_blade.mixins.json
-
