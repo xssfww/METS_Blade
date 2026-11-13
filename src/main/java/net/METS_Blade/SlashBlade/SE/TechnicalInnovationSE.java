@@ -5,6 +5,7 @@ import mods.flammpfeil.slashblade.capability.slashblade.ISlashBladeState;
 import mods.flammpfeil.slashblade.event.SlashBladeEvent;
 import mods.flammpfeil.slashblade.registry.specialeffects.SpecialEffect;
 import net.METS_Blade.Register.METS_BladeSlashEffect;
+import net.METS_Blade.SlashBlade.Util.SEBladeSwitch;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,6 +25,9 @@ public class TechnicalInnovationSE  extends SpecialEffect {
         if (state.hasSpecialEffect(METS_BladeSlashEffect.Doom_Surge_Curse_Destroy.getId())) {
             LivingEntity user = event.getUser();
             if (user instanceof ServerPlayer player) {
+                if (SEBladeSwitch.isDisabled(player)) {
+                    return;
+                }
                 if ((player.level() instanceof ServerLevel)) {
                     int level = player.experienceLevel;
                     if (SpecialEffect.isEffective(METS_BladeSlashEffect.Doom_Surge_Curse_Destroy.get(), level)) {

@@ -1,5 +1,6 @@
 package net.METS_Blade;
 
+import net.METS_Blade.Network.PacketHandler;
 import net.METS_Blade.Register.METS_BladeCombo;
 import net.METS_Blade.Register.METS_BladeItem;
 import net.METS_Blade.Register.METS_BladeSlashArt;
@@ -16,5 +17,6 @@ public class METS_SlashBlade {
         METS_BladeCombo.COMBO_STATES.register(bus);
         METS_BladeSlashArt.SLASH_ARTS.register(bus);
         METS_BladeSlashEffect.SPECIAL_EFFECT.register(bus);
+        PacketHandler.RegisterManager();
     }
 }

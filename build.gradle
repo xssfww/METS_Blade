@@ -18,14 +18,13 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 
 group = mod_group_id
-version = mod_version
 
 ext {
     mod_disname = "[拔刀剑：更多电力工具]"
 }
 
 base {
-    archivesName = "${mod_disname}${mod_name}-${minecraft_version}"
+    archivesName = "${mod_disname}${mod_name}-${minecraft_version}-${mod_version}"
 }
 
 java {

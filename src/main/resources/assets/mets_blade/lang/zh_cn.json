@@ -19,6 +19,10 @@
   "se.mets_blade.doom_surge_curse_destroy": "§b死劲·灭咒§r",
   "slash_art.mets_blade.conservation_energy": "§9动量定理",
   "se.mets_blade.inch_surge_arrow": "§3寸劲·箭矢",
+  "key.category.mets_blade": "拔刀剑：更多电力工具",
+  "key.mets_blade.toggle_se": "开关SE",
+  "message.mets_blade.se_enabled": "§aSE已开启§r",
+  "message.mets_blade.se_disabled": "§cSE已关闭§r",
   "enchantment.level.12": "§f「§r§e至高极限§r§f」§r",
   "death.attack.mix_damage": "%s 在高能速子流中崩解，连夸克都未曾留下",
   "death.attack.mix_damage_killer": "%s 被 %s 的高能速子流从存在层面抹去，灰飞烟灭"

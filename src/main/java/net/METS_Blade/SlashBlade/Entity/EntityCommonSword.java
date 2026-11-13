@@ -19,12 +19,14 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 public class EntityCommonSword extends EntityAbstractSummonedSword {
-    protected static final EntityDataAccessor<Boolean> IT_FIRED;
+    private static final EntityDataAccessor<Boolean> IS_FIRED = SynchedEntityData.defineId(EntityCommonSword.class, EntityDataSerializers.BOOLEAN);
+    private static final double SPEED = 3.0;
+    private static final double TURN_RATE = 0.3;
+    private static final double AIM_RANDOM_FACTOR = 0.007499999832361937;
+    private static final double AIM_SCALE = 3.0;
     private Vec3 targetPos = Vec3.ZERO;
     private int targetId = -1;
     private long fireTime = -1L;
-    private static final double SPEED = 3.0;
-    private static final double TURN_RATE = 0.3;
     public EntityCommonSword(EntityType<? extends Projectile> entityTypeIn, Level worldIn) {
         super(entityTypeIn, worldIn);
     }
@@ -33,11 +35,11 @@ public class EntityCommonSword extends EntityAbstractSummonedSword {
     }
     @Override
     public void tick() {
-        if (!this.itFired() && this.getVehicle() == null && this.getOwner() != null) {
-            this.startRiding(this.getOwner(), true);
+        if (!isFired() && getVehicle() == null && getOwner() != null) {
+            startRiding(getOwner(), true);
         }
         super.tick();
-        if (this.itFired() && !this.level().isClientSide && this.tickCount > 0) {
+        if (isFired() && !level().isClientSide && tickCount > 0) {
             LivingEntity target = getTrackingTarget();
             if (target != null) {
                 steerTowardTarget(target);
@@ -46,39 +48,36 @@ public class EntityCommonSword extends EntityAbstractSummonedSword {
     }
     @Override
     public void rideTick() {
-        if (this.getVehicle() instanceof LivingEntity sender) {
-            if (sender.level() instanceof ServerLevel) {
-                if (this.itFired() && this.fireTime <= (long) this.tickCount) {
-                    this.stopRiding();
-                    this.tickCount = 0;
-                    Vec3 initDir = targetPos.normalize();
-                    this.setDeltaMovement(initDir.scale(SPEED));
-                    this.setRot(initDir);
-                } else {
-                    this.setDeltaMovement(Vec3.ZERO);
-                    this.setRot(targetPos);
-                    if (this.canUpdate()) {
-                        this.baseTick();
-                    }
-                    if (!this.itFired()) {
-                        this.fireTime = this.tickCount + this.getDelay();
-                        this.doFire();
-                    }
-                }
+        if (!(getVehicle() instanceof LivingEntity sender)) return;
+        if (!(sender.level() instanceof ServerLevel)) return;
+        if (isFired() && fireTime <= (long) tickCount) {
+            stopRiding();
+            tickCount = 0;
+            Vec3 initDir = targetPos.normalize();
+            setDeltaMovement(initDir.scale(SPEED));
+            setRot(initDir);
+        } else {
+            setDeltaMovement(Vec3.ZERO);
+            setRot(targetPos);
+            if (canUpdate()) {
+                baseTick();
+            }
+            if (!isFired()) {
+                fireTime = tickCount + getDelay();
+                doFire();
             }
         }
     }
     public void setRot(Vec3 dir) {
-        Vec3 vec3d = dir.normalize()
-                .add(
-                        this.random.nextGaussian() * 0.007499999832361937,
-                        this.random.nextGaussian() * 0.007499999832361937,
-                        this.random.nextGaussian() * 0.007499999832361937
-                )
-                .scale(3.0F);
-        float horizontalDist = Mth.sqrt((float) vec3d.horizontalDistanceSqr());
-        this.setYRot((float) (Mth.atan2(vec3d.x, vec3d.z) * 180.0 / Math.PI));
-        this.setXRot((float) (Mth.atan2(vec3d.y, horizontalDist) * 180.0 / Math.PI));
+        Vec3 aimed = addRandomAimOffset(dir);
+        float horizontalDist = Mth.sqrt((float) aimed.horizontalDistanceSqr());
+        setYRot((float) (Mth.atan2(aimed.x, aimed.z) * 180.0 / Math.PI));
+        setXRot((float) (Mth.atan2(aimed.y, horizontalDist) * 180.0 / Math.PI));
+    }
+    private Vec3 addRandomAimOffset(Vec3 baseDir) {
+        return baseDir.normalize()
+                .add(random.nextGaussian() * AIM_RANDOM_FACTOR, random.nextGaussian() * AIM_RANDOM_FACTOR, random.nextGaussian() * AIM_RANDOM_FACTOR)
+                .scale(AIM_SCALE);
     }
     public void setTargetPos(Vec3 dir) {
         this.targetPos = dir;
@@ -89,16 +88,17 @@ public class EntityCommonSword extends EntityAbstractSummonedSword {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(IT_FIRED, false);
+        entityData.define(IS_FIRED, false);
     }
     public void doFire() {
-        this.getEntityData().set(IT_FIRED, true);
+        entityData.set(IS_FIRED, true);
     }
-    public boolean itFired() {
-        return this.getEntityData().get(IT_FIRED);
+    public boolean isFired() {
+        return entityData.get(IS_FIRED);
     }
     @Override
-    protected void onHitBlock(BlockHitResult blockHitresult) {
+    protected void onHitBlock(BlockHitResult blockHitResult) {
+        super.onHitBlock(blockHitResult);
         super.burst();
     }
     @Override
@@ -112,8 +112,8 @@ public class EntityCommonSword extends EntityAbstractSummonedSword {
     }
     @Nullable
     private LivingEntity getTrackingTarget() {
-        if (this.targetId != -1) {
-            Entity e = this.level().getEntity(this.targetId);
+        if (targetId != -1) {
+            Entity e = level().getEntity(targetId);
             if (e instanceof LivingEntity living && living.isAlive()) {
                 return living;
             }
@@ -121,16 +121,12 @@ public class EntityCommonSword extends EntityAbstractSummonedSword {
         return null;
     }
     private void steerTowardTarget(LivingEntity target) {
-        Vec3 myPos = this.position();
+        Vec3 Pos = this.position();
         Vec3 targetPos = target.position();
-        Vec3 desiredDir = targetPos.subtract(myPos).normalize();
+        Vec3 desiredDir = targetPos.subtract(Pos).normalize();
         Vec3 currentDir = this.getDeltaMovement().normalize();
         Vec3 newDir = currentDir.add(desiredDir.subtract(currentDir).scale(TURN_RATE)).normalize();
-        this.setDeltaMovement(newDir.scale(SPEED));
-        this.setRot(newDir);
-    }
-    static {
-        IT_FIRED = SynchedEntityData.defineId(EntityCommonSword.class, EntityDataSerializers.BOOLEAN);
+        setDeltaMovement(newDir.scale(SPEED));
+        setRot(newDir);
     }
 }
-

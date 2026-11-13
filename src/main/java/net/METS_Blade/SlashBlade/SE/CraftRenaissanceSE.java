@@ -10,6 +10,7 @@ import mods.flammpfeil.slashblade.util.VectorHelper;
 import net.METS_Blade.Register.METS_BladeEntity;
 import net.METS_Blade.Register.METS_BladeSlashEffect;
 import net.METS_Blade.SlashBlade.Entity.EntityCraftSword;
+import net.METS_Blade.SlashBlade.Util.SEBladeSwitch;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,6 +34,9 @@ public class CraftRenaissanceSE extends SpecialEffect {
         if (state.hasSpecialEffect(METS_BladeSlashEffect.Divine_Surge_Fire_Arrow.getId())) {
             LivingEntity user = event.getUser();
             if (user instanceof ServerPlayer player) {
+                if (SEBladeSwitch.isDisabled(player)) {
+                    return;
+                }
                 if ((player.level() instanceof ServerLevel)) {
                     int level = player.experienceLevel;
                     if (SpecialEffect.isEffective(METS_BladeSlashEffect.Divine_Surge_Fire_Arrow.get(), level)) {

@@ -5,6 +5,7 @@ import mods.flammpfeil.slashblade.ability.StunManager;
 import mods.flammpfeil.slashblade.entity.Projectile;
 import mods.flammpfeil.slashblade.util.KnockBacks;
 import net.METS_Blade.SlashBlade.DamageSource.MixDamageSource;
+import net.METS_Blade.SlashBlade.Util.ToolManager;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import java.util.List;
 public class EntityBloodSword extends EntityCommonSword {
     public EntityBloodSword(EntityType<? extends Projectile> entityTypeIn, Level worldIn) {
         super(entityTypeIn, worldIn);
@@ -27,54 +29,37 @@ public class EntityBloodSword extends EntityCommonSword {
         return new EntityBloodSword(SlashBlade.RegistryEvents.SummonedSword, worldIn);
     }
     @Override
-    public void tick() {
-        super.tick();
-    }
-    @Override
-    public void rideTick() {
-        super.rideTick();
-    }
-    @Override
-    protected void onHitBlock(BlockHitResult blockHitresult) {
-        if (this.getShooter() != null) {
-            if (this.level() instanceof ServerLevel world) {
-                world.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0,0.0,0.0);
-                this.playSound(SoundEvents.GENERIC_EXPLODE, 0.7F, 1.6F + (world.getRandom().nextFloat() - world.getRandom().nextFloat()) * 0.4F);
-            }
+    protected void onHitBlock(BlockHitResult blockHitResult) {
+        if (this.getShooter() != null && this.level() instanceof ServerLevel level) {
+            MixDamageSource source = createExplosionDamageSource(level);
+            List<Entity> entityList = ToolManager.getEntity(level, this, 3);
+            entityList.forEach(entity -> entity.hurt(source, (float) this.getDamage()));
+            level.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+            this.playSound(SoundEvents.GENERIC_EXPLODE, 0.7F, 1.6F + (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.4F);
         }
         super.burst();
     }
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         Entity targetEntity = entityHitResult.getEntity();
-        if (targetEntity instanceof LivingEntity entity) {
-            KnockBacks.cancel.action.accept(entity);
-            StunManager.setStun(entity);
-            if (this.getShooter() != null && this.level() instanceof ServerLevel Level) {
-                Registry<DamageType> damageTypes = Level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
-                MixDamageSource source = new MixDamageSource(
-                        damageTypes.getHolderOrThrow(DamageTypes.EXPLOSION),
-                        this,
-                        this.getShooter(),
-                        this.position()
-                );
-                Level.sendParticles(
-                        ParticleTypes.EXPLOSION,
-                        this.getX(), this.getY(), this.getZ(),
-                        1,
-                        0.0, 0.0, 0.0, 0.0
-                );
-                this.playSound(
-                        SoundEvents.GENERIC_EXPLODE,
-                        0.7F,
-                        1.6F + (Level.getRandom().nextFloat() - Level.getRandom().nextFloat()) * 0.4F
-                );
-                source.addRuntimeTag(DamageTypeTags.BYPASSES_ARMOR)
-                      .addRuntimeTag(DamageTypeTags.BYPASSES_EFFECTS)
-                      .addRuntimeTag(DamageTypeTags.BYPASSES_COOLDOWN)
-                      .addRuntimeTag(DamageTypeTags.BYPASSES_ENCHANTMENTS);
-                entity.hurt(source, (float) this.getDamage());
+        if (this.getShooter() != null && this.level() instanceof ServerLevel level) {
+            MixDamageSource source = createExplosionDamageSource(level);
+            if (targetEntity instanceof LivingEntity livingEntity) {
+                KnockBacks.cancel.action.accept(livingEntity);
+                StunManager.setStun(livingEntity);
             }
+            targetEntity.hurt(source, (float) this.getDamage());
+            level.sendParticles(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+            this.playSound(SoundEvents.GENERIC_EXPLODE, 0.7F, 1.6F + (level.getRandom().nextFloat() - level.getRandom().nextFloat()) * 0.4F);
         }
+    }
+    protected MixDamageSource createExplosionDamageSource(ServerLevel level) {
+        Registry<DamageType> damageTypes = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
+        return new MixDamageSource(damageTypes.getHolderOrThrow(DamageTypes.EXPLOSION), this, this.getShooter(), this.position())
+                .addRuntimeTag(DamageTypeTags.ALWAYS_HURTS_ENDER_DRAGONS)
+                .addRuntimeTag(DamageTypeTags.BYPASSES_ARMOR)
+                .addRuntimeTag(DamageTypeTags.BYPASSES_EFFECTS)
+                .addRuntimeTag(DamageTypeTags.BYPASSES_COOLDOWN)
+                .addRuntimeTag(DamageTypeTags.BYPASSES_ENCHANTMENTS);
     }
 }
